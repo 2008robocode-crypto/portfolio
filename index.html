@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>Purav N Parashar — AI, Robotics & Intelligent Systems</title>
+  <meta name="description" content="Purav N Parashar is an AI and robotics builder exploring computer vision, intelligent systems, physical AI and real-world engineering.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./styles.css">
+
+<style>
+    :root {
+  --background: #030303;
+  --foreground: #f0f0f0;
+  --accent: #1e1e1e;
+  --muted: #888888;
+  --border: #222222;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Noise overlay removed for performance */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Typography */
+.font-mono { font-family: var(--font-mono); }
+.text-muted { color: var(--muted); }
+.tracking-widest { letter-spacing: 0.1em; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-tighter { letter-spacing: -0.05em; }
+.uppercase { text-transform: uppercase; }
+.italic { font-style: italic; }
+.font-light { font-weight: 300; }
+.font-bold { font-weight: 700; }
+
+/* Sections */
+section {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+.py-40 { padding-top: 10rem; padding-bottom: 10rem; }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+.hero-radial {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background: radial-gradient(circle 800px at center, rgba(255,255,255,0.03), transparent);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+  margin: 2rem 0;
+}
+
+.hero-desc {
+  font-size: 1.25rem;
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+  cursor: pointer;
+  background: transparent;
+}
+.btn-primary {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+.btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+}
+.dot-ping {
+  position: relative;
+  display: flex;
+  width: 8px;
+  height: 8px;
+}
+.dot-ping::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #22c55e;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.dot-ping::after {
+  content: "";
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+/* Philosophy */
+.philosophy h2 {
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 0.9;
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  margin: 2rem 0;
+}
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .philosophy-grid { grid-template-columns: 4fr 8fr; }
+}
+.philosophy-text {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+
+/* Projects */
+.projects-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .projects-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+}
+.projects-header h2 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
+  transition: border-color 0.3s;
+}
+@media (min-width: 1024px) {
+  .project-card { grid-template-columns: 5fr 7fr; }
+}
+.project-card:hover {
+  border-color: rgba(255,255,255,0.2);
+}
+.project-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .project-info { padding: 3rem; }
+}
+.project-title {
+  font-size: 2.25rem;
+  margin: 1rem 0;
+}
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+.tech-tag {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
+  font-size: 0.625rem;
+}
+.project-image-container {
+  position: relative;
+  min-height: 300px;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .project-image-container { min-height: 500px; border-top: none; border-left: 1px solid var(--border); }
+}
+.project-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease-out, filter 1s;
+  filter: grayscale(100%);
+}
+.project-card:hover .project-image-container img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+/* Modals (CSS Only) */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(3,3,3,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(3,3,3,1), transparent);
+  pointer-events: none;
+  z-index: 101;
+}
+.modal-close {
+  pointer-events: auto;
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.3s;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+.modal-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem;
+}
+.modal-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+.modal-hero-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+@media (min-width: 768px) {
+  .modal-grid { grid-template-columns: 4fr 8fr; }
+}
+.modal-section { margin-bottom: 3rem; }
+.modal-section-title {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.modal-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.modal-list-num { color: var(--muted); }
+
+/* Tech Stack */
+.tech-bg { background-color: rgba(30, 30, 30, 0.05); }
+.tech-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media (min-width: 768px) {
+  .tech-container { flex-direction: row; }
+}
+.tech-tabs {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .tech-tabs { width: 33.333%; }
+}
+.tech-tabs h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 3rem;
+}
+
+/* CSS Tabs */
+input[type="radio"][name="tech-tab"] {
+  display: none;
+}
+.tab-label {
+  display: block;
+  padding: 1rem 0 1rem 1.5rem;
+  border-left: 2px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab-label:hover {
+  color: rgba(255,255,255,0.8);
+}
+#tab1:checked ~ .tech-tabs label[for="tab1"],
+#tab2:checked ~ .tech-tabs label[for="tab2"],
+#tab3:checked ~ .tech-tabs label[for="tab3"],
+#tab4:checked ~ .tech-tabs label[for="tab4"] {
+  border-color: var(--foreground);
+  color: var(--foreground);
+}
+
+.tech-content {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  padding: 3rem;
+  position: relative;
+  min-height: 400px;
+}
+@media (min-width: 768px) {
+  .tech-content { width: 66.666%; }
+}
+.tech-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+#tab1:checked ~ .tech-content .panel-1,
+#tab2:checked ~ .tech-content .panel-2,
+#tab3:checked ~ .tech-content .panel-3,
+#tab4:checked ~ .tech-content .panel-4 {
+  display: block;
+}
+
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.tech-item {
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.tech-item:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* How I Think */
+.think-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem 2rem;
+}
+@media (min-width: 768px) {
+  .think-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .think-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.think-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.think-num {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.think-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--border);
+  transition: background-color 0.3s;
+}
+.think-step:hover .think-line { background-color: var(--foreground); }
+.think-step h3 { font-size: 1.5rem; }
+
+/* Lab */
+.lab-table {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.lab-header {
+  display: none;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 768px) {
+  .lab-header {
+    display: grid;
+    grid-template-columns: 2fr 5fr 3fr 2fr;
+    gap: 1rem;
+  }
+}
+.lab-row {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+.lab-row:last-child { border-bottom: none; }
+.lab-row:hover { background: rgba(255,255,255,0.05); }
+@media (min-width: 768px) {
+  .lab-row {
+    grid-template-columns: 2fr 5fr 3fr 2fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  .mobile-label { display: none; }
+}
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+}
+.status-working { color: #22c55e; background: rgba(34,197,94,0.1); }
+.status-prototype { color: #eab308; background: rgba(234,179,8,0.1); }
+.status-deployed { color: #3b82f6; background: rgba(59,130,246,0.1); }
+.status-testing { color: #a8a29e; background: rgba(168,162,158,0.1); }
+.status-archived { color: var(--muted); background: rgba(136,136,136,0.1); }
+
+/* About */
+.about {
+  text-align: center;
+  overflow: hidden;
+}
+.about-bg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20vw;
+  font-weight: 700;
+  opacity: 0.02;
+  pointer-events: none;
+  user-select: none;
+}
+.about-content {
+  position: relative;
+  z-index: 10;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+.about h2 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 3rem; }
+.about p { font-size: clamp(1.25rem, 3vw, 2rem); margin-bottom: 4rem; color: rgba(255,255,255,0.8); }
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.about-tag {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+}
+
+/* Contact */
+.contact {
+  text-align: center;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact h2 {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.8;
+  margin: 2rem 0 4rem;
+}
+.footer {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  margin-top: 4rem;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .footer-content { flex-direction: row; }
+}
+/* Additions for refactored classes */
+.hero-block { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 5rem; position: relative; }
+.bottom-line { border-bottom: 1px solid var(--border); }
+.hero-logs-container { position: absolute; bottom: 2rem; left: 2rem; font-size: 10px; display: flex; flex-direction: column; gap: 0.5rem; }
+.philosophy-wrapper { position: relative; border-bottom: 1px solid var(--border); }
+.pt-large { padding-top: 10rem; }
+.pb-large { padding-bottom: 10rem; }
+.work-showcase { position: relative; }
+.py-standard { padding-top: 8rem; padding-bottom: 8rem; }
+.border-base { border-bottom: 1px solid var(--border); }
+.tech-stack-area { position: relative; }
+.section-wrapper { position: relative; }
+.section-main-heading { font-size: clamp(2.5rem, 5vw, 3rem); margin-bottom: 6rem; }
+.lab-header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6rem; flex-wrap: wrap; gap: 2rem; }
+.badge-indicator { padding: 0.25rem 0.5rem; border-radius: 2px; }
+.phase-testing { color: #a8a29e; background: rgba(168,162,158,0.1); }
+.btn-center-wrapper { margin-top: 2rem; display: flex; justify-content: center; }
+.log-btn-custom { background: none; border: none; border-bottom: 1px solid transparent; color: var(--muted); cursor: pointer; padding-bottom: 0.25rem; transition: all 0.3s; }
+.log-btn-custom:hover { color: var(--foreground); border-color: var(--foreground); }
+.about-section { text-align: center; overflow: hidden; position: relative; }
+.contact-area { text-align: center; min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+.centered-buttons { justify-content: center; margin-bottom: 8rem; }
+.site-footer { width: 100%; border-top: 1px solid var(--border); padding: 1.5rem 0; margin-top: 4rem; }
+.site-footer-inner { display: flex; flex-direction: column; gap: 1rem; align-items: center; justify-content: space-between; }
+@media (min-width: 768px) { .site-footer-inner { flex-direction: row; } }
+.footer-links-flex { display: flex; gap: 1rem; }
+
+</style>
+
+
+
+
+
+
+</head>
+<body>
+
+  
+  <header class="hero-block bottom-line">
+    <div class="hero-radial"></div>
+    <div class="hero-grid"></div>
+    
+    <div class="container" style="position: relative; z-index: 10;">
+      <div style="max-width: 1024px;">
+        <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 12px; margin-bottom: 2rem;">
+          <span style="color: #f0f0f0;">>_</span> PURAV N PARASHAR <span style="opacity: 0.5;">/</span> AI × ROBOTICS × SYSTEMS
+        </div>
+
+        <h1 class="hero-title font-bold uppercase tracking-tighter">
+          I Build <br>
+          <span class="text-muted">Machines</span> <br>
+          That Can <br>
+          <span class="italic font-light" style="text-transform: none;">See. Think. Move.</span>
+        </h1>
+
+        <p class="hero-desc text-muted font-light">
+          AI, robotics and computer vision experiments turned into real-world systems.
+        </p>
+
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary font-mono tracking-widest uppercase">
+            [ EXPLORE MY WORK ] ↘
+          </a>
+          <a href="#contact" class="btn font-mono tracking-widest uppercase text-foreground">
+            [ LET'S BUILD SOMETHING ]
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-indicator font-mono text-muted tracking-widest uppercase">
+      <div class="dot-ping"></div>
+      CURRENTLY BUILDING AI + ROBOTICS SYSTEMS
+    </div>
+    
+    <div class="font-mono text-muted tracking-widest uppercase" class="hero-logs-container">
+      <span>SYS.BOOT_OK</span>
+      <span>SCROLL TO EXPLORE ↓</span>
+    </div>
+  </section>
+
+
+  <article class="philosophy-wrapper pt-large pb-large">
+    <div class="container">
+      <h2 class="font-bold tracking-tighter uppercase">
+        I DON'T JUST <br>
+        <span class="text-muted">WRITE CODE.</span> <br>
+        I BUILD SYSTEMS.
+      </h2>
+
+      <div class="divider"></div>
+
+      <div class="philosophy-grid">
+        <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+          [ PHILOSOPHY ]
+        </div>
+        <div>
+          <p class="philosophy-text font-light text-foreground" style="opacity: 0.8;">
+            From Raspberry Pi robots and computer vision experiments to AI-powered platforms, I like turning ideas that sound <span class="italic">slightly impossible</span> into working prototypes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <div id="projects" class="work-showcase py-standard border-base">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <h2 class="font-bold tracking-tighter uppercase">SELECTED BUILDS</h2>
+          <p class="text-muted font-light" style="font-size: 20px; margin-top: 16px;">
+            Things I've designed, engineered, broken, rebuilt and shipped.
+          </p>
+        </div>
+        <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+          [ 5 PROJECTS ONLINE ]
+        </div>
+      </div>
+
+    
+      <a href="#modal-mediflow">
+        <div class="project-card">
+          <div class="project-info">
+            <div>
+              <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 10px; margin-bottom: 16px;">
+                01 — AI × Healthcare × Optimization
+              </div>
+              <h3 class="project-title font-bold uppercase tracking-tight text-foreground">
+                MEDIFLOW NEXUS
+              </h3>
+              <p class="text-muted font-light mt-4">
+                An AI-powered healthcare logistics platform designed to predict medicine stock-outs, identify risk, and intelligently redistribute medical resources between facilities.
+              </p>
+            </div>
+            <div class="project-tech font-mono uppercase text-muted tracking-widest">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">OR-Tools</span>
+              <span class="tech-tag">BigQuery</span>
+              <span class="tech-tag">+3</span>
+            </div>
+          </div>
+          <div class="project-image-container">
+            <img src="images/media_1788884197367.png" alt="Dashboard view of Mediflow Nexus platform">
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="#modal-ai">
+        <div class="project-card">
+          <div class="project-info">
+            <div>
+              <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 10px; margin-bottom: 16px;">
+                02 — ROBOTICS × AI × EMBODIED INTELLIGENCE
+              </div>
+              <h3 class="project-title font-bold uppercase tracking-tight text-foreground">
+                PERSONAL AI COMPANION
+              </h3>
+              <p class="text-muted font-light mt-4">
+                An experimental physical AI system designed to bring conversational intelligence into the real world using Raspberry Pi, cameras, motors and sensors.
+              </p>
+            </div>
+            <div class="project-tech font-mono uppercase text-muted tracking-widest">
+              <span class="tech-tag">Raspberry Pi</span>
+              <span class="tech-tag">Camera</span>
+              <span class="tech-tag">DC motors</span>
+              <span class="tech-tag">Sensors</span>
+              <span class="tech-tag">+3</span>
+            </div>
+          </div>
+          <div class="project-image-container">
+            <img src="images/media_1788884139383.png" alt="Physical prototype of personal AI companion">
+          </div>
+        </div>
+      </a>
+
+      
+      <a href="#modal-roborace">
+        <div class="project-card">
+          <div class="project-info">
+            <div>
+              <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 10px; margin-bottom: 16px;">
+                03 — ROBOTICS × EMBEDDED SYSTEMS
+              </div>
+              <h3 class="project-title font-bold uppercase tracking-tight text-foreground">
+                ROBO RACE
+              </h3>
+              <p class="text-muted font-light mt-4">
+                A remotely controlled robotic vehicle built around microcontrollers, wireless communication, motor control and real-time input.
+              </p>
+            </div>
+            <div class="project-tech font-mono uppercase text-muted tracking-widest">
+              <span class="tech-tag">Arduino</span>
+              <span class="tech-tag">ESP8266</span>
+              <span class="tech-tag">L298N</span>
+              <span class="tech-tag">DC motors</span>
+              <span class="tech-tag">+3</span>
+            </div>
+          </div>
+          <div class="project-image-container">
+            <img src="images/media_1788884153689.png" alt="Remote controlled roborace vehicle">
+          </div>
+        </div>
+      </a>
+      
+      
+      <a href="#modal-crowd">
+        <div class="project-card">
+          <div class="project-info">
+            <div>
+              <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 10px; margin-bottom: 16px;">
+                04 — COMPUTER VISION × SAFETY
+              </div>
+              <h3 class="project-title font-bold uppercase tracking-tight text-foreground">
+                CROWD GUARDIAN
+              </h3>
+              <p class="text-muted font-light mt-4">
+                An experimental computer-vision system designed to detect dangerous crowd conditions and identify potential stampede risks.
+              </p>
+            </div>
+            <div class="project-tech font-mono uppercase text-muted tracking-widest">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">YOLO</span>
+              <span class="tech-tag">TensorFlow</span>
+            </div>
+          </div>
+          <div class="project-image-container">
+            <img src="images/media_1788884167581.png" alt="Crowd guardian computer vision detection">
+          </div>
+        </div>
+      </a>
+      
+      
+      <a href="#modal-blind">
+        <div class="project-card">
+          <div class="project-info">
+            <div>
+              <div class="font-mono text-muted uppercase tracking-widest" style="font-size: 10px; margin-bottom: 16px;">
+                05 — AI × COMPUTER VISION × ACCESSIBILITY
+              </div>
+              <h3 class="project-title font-bold uppercase tracking-tight text-foreground">
+                BLIND AI 2.0
+              </h3>
+              <p class="text-muted font-light mt-4">
+                An AI-powered indoor navigation concept designed to help visually impaired users understand and navigate complex environments.
+              </p>
+            </div>
+            <div class="project-tech font-mono uppercase text-muted tracking-widest">
+              <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">Edge AI</span>
+              <span class="tech-tag">Voice API</span>
+            </div>
+          </div>
+          <div class="project-image-container">
+            <img src="images/media_1788884181130.png" alt="Blind AI navigation interface">
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+ 
+  <div class="tech-stack-area py-standard tech-bg border-base">
+    <div class="container tech-container">
+      
+      
+      <input type="radio" name="tech-tab" id="tab1" checked>
+      <input type="radio" name="tech-tab" id="tab2">
+      <input type="radio" name="tech-tab" id="tab3">
+      <input type="radio" name="tech-tab" id="tab4">
+
+      <div class="tech-tabs">
+        <h2 class="font-bold tracking-tighter uppercase">TOOLS I <br class="hidden-mobile"> BUILD WITH</h2>
+        
+        <div class="font-mono uppercase tracking-widest" style="font-size: 0.875rem;">
+          <label for="tab1" class="tab-label">01 — AI / ML</label>
+          <label for="tab2" class="tab-label">02 — ROBOTICS</label>
+          <label for="tab3" class="tab-label">03 — WEB</label>
+          <label for="tab4" class="tab-label">04 — DATA / SYSTEMS</label>
+        </div>
+      </div>
+
+      <div class="tech-content">
+        <div style="position: absolute; top: 1rem; right: 1rem; font-size: 0.625rem; opacity: 0.5;" class="font-mono text-muted uppercase tracking-widest">
+          SYSTEM_INTERFACE_ACTIVE
+        </div>
+
+        <div class="tech-panel panel-1">
+          <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px; display: inline-block;">
+            AI / ML / MODULES
+          </div>
+          <div class="tech-grid font-mono uppercase tracking-widest" style="font-size: 0.875rem;">
+            <div class="tech-item">Python</div>
+            <div class="tech-item">FastAPI</div>
+            <div class="tech-item">Computer Vision</div>
+            <div class="tech-item">Gemini</div>
+            <div class="tech-item">Vertex AI</div>
+            <div class="tech-item">OpenCV</div>
+            <div class="tech-item">TensorFlow</div>
+          </div>
+        </div>
+
+        <div class="tech-panel panel-2">
+          <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px; display: inline-block;">
+            ROBOTICS / MODULES
+          </div>
+          <div class="tech-grid font-mono uppercase tracking-widest" style="font-size: 0.875rem;">
+            <div class="tech-item">Raspberry Pi</div>
+            <div class="tech-item">Arduino</div>
+            <div class="tech-item">ESP32</div>
+            <div class="tech-item">ESP8266</div>
+            <div class="tech-item">Motor Drivers</div>
+            <div class="tech-item">Sensors</div>
+            <div class="tech-item">PWM</div>
+          </div>
+        </div>
+
+        <div class="tech-panel panel-3">
+          <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px; display: inline-block;">
+            WEB / MODULES
+          </div>
+          <div class="tech-grid font-mono uppercase tracking-widest" style="font-size: 0.875rem;">
+            <div class="tech-item">Next.js</div>
+            <div class="tech-item">TypeScript</div>
+            <div class="tech-item">React</div>
+            <div class="tech-item">TailwindCSS</div>
+            <div class="tech-item">Framer Motion</div>
+          </div>
+        </div>
+
+        <div class="tech-panel panel-4">
+          <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px; display: inline-block;">
+            DATA / SYSTEMS / MODULES
+          </div>
+          <div class="tech-grid font-mono uppercase tracking-widest" style="font-size: 0.875rem;">
+            <div class="tech-item">BigQuery</div>
+            <div class="tech-item">Docker</div>
+            <div class="tech-item">OR-Tools</div>
+            <div class="tech-item">REST APIs</div>
+            <div class="tech-item">WebSockets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <div class="section-wrapper py-standard border-base">
+    <div class="container">
+      <h2 class="font-bold tracking-tighter uppercase" class="section-main-heading">HOW I THINK</h2>
+      
+      <div class="think-grid">
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 01</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">QUESTION EVERYTHING</h3>
+        </div>
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 02</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">BUILD THE SMALLEST PROTOTYPE</h3>
+        </div>
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 03</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">BREAK IT</h3>
+        </div>
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 04</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">UNDERSTAND WHY</h3>
+        </div>
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 05</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">BUILD IT BETTER</h3>
+        </div>
+        <div class="think-step">
+          <div class="think-num font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+            <span>STEP 06</span> <div class="think-line"></div>
+          </div>
+          <h3 class="font-bold uppercase tracking-tight">SHIP IT</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="section-wrapper py-standard border-base">
+    <div class="container">
+      <div class="lab-header-flex">
+        <h2 class="font-bold tracking-tighter uppercase" style="font-size: clamp(2.5rem, 5vw, 3rem);">EXPERIMENT LAB</h2>
+        <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+          [ ENGINEERING NOTEBOOK / LOGS ]
+        </div>
+      </div>
+
+      <div class="lab-table">
+        <div class="lab-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+          <div>EXPERIMENT</div>
+          <div>OBJECT</div>
+          <div>CATEGORY</div>
+          <div style="text-align: right;">STATUS</div>
+        </div>
+
+        <div class="lab-row">
+          <div class="font-mono text-muted" style="font-size: 0.875rem;"><span class="mobile-label text-xs">EXP:</span>#024</div>
+          <div class="font-bold uppercase tracking-tight text-foreground">Robotic Navigation</div>
+          <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;"><span class="mobile-label">CAT:</span>Robotics</div>
+          <div class="font-mono tracking-widest uppercase" style="font-size: 12px; text-align: right;"><span class="mobile-label text-muted" style="float: left;">STATUS:</span><span class="status-badge status-working">WORKING</span></div>
+        </div>
+
+        <div class="lab-row">
+          <div class="font-mono text-muted" style="font-size: 0.875rem;"><span class="mobile-label text-xs">EXP:</span>#023</div>
+          <div class="font-bold uppercase tracking-tight text-foreground">Plant Care Robot</div>
+          <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;"><span class="mobile-label">CAT:</span>Embedded Systems</div>
+          <div class="font-mono tracking-widest uppercase" style="font-size: 12px; text-align: right;"><span class="mobile-label text-muted" style="float: left;">STATUS:</span><span class="status-badge status-prototype">PROTOTYPE</span></div>
+        </div>
+
+        <div class="lab-row">
+          <div class="font-mono text-muted" style="font-size: 0.875rem;"><span class="mobile-label text-xs">EXP:</span>#021</div>
+          <div class="font-bold uppercase tracking-tight text-foreground">Fire-fighting Robot</div>
+          <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;"><span class="mobile-label">CAT:</span>Hardware</div>
+          <div class="font-mono tracking-widest uppercase" style="font-size: 12px; text-align: right;"><span class="mobile-label text-muted" style="float: left;">STATUS:</span><span class="badge-indicator phase-testing">TESTING</span></div>
+        </div>
+
+        <div class="lab-row">
+          <div class="font-mono text-muted" style="font-size: 0.875rem;"><span class="mobile-label text-xs">EXP:</span>#019</div>
+          <div class="font-bold uppercase tracking-tight text-foreground">NFC Review System</div>
+          <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;"><span class="mobile-label">CAT:</span>Automation</div>
+          <div class="font-mono tracking-widest uppercase" style="font-size: 12px; text-align: right;"><span class="mobile-label text-muted" style="float: left;">STATUS:</span><span class="status-badge status-deployed">DEPLOYED</span></div>
+        </div>
+
+        <div class="lab-row">
+          <div class="font-mono text-muted" style="font-size: 0.875rem;"><span class="mobile-label text-xs">EXP:</span>#014</div>
+          <div class="font-bold uppercase tracking-tight text-foreground">Real-time Pose Estimation</div>
+          <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 12px;"><span class="mobile-label">CAT:</span>Computer Vision</div>
+          <div class="font-mono tracking-widest uppercase" style="font-size: 12px; text-align: right;"><span class="mobile-label text-muted" style="float: left;">STATUS:</span><span class="status-badge status-archived">ARCHIVED</span></div>
+        </div>
+      </div>
+      
+      <div class="btn-center-wrapper">
+        <button class="log-btn-custom" class="font-mono tracking-widest uppercase" onmouseover="this.style.color='var(--foreground)'; this.style.borderColor='var(--foreground)';" onmouseout="this.style.color='var(--muted)'; this.style.borderColor='transparent';">
+          VIEW FULL LOG_
+        </button>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="about-section py-standard border-base">
+    <div class="about-bg-text">BUILD</div>
+    <div class="container about-content">
+      <h2 class="font-bold tracking-tighter uppercase text-foreground">CURIOUS ENOUGH TO BUILD IT.</h2>
+      <p class="font-light">I'm interested in what happens when software leaves the screen and enters the physical world.</p>
+      
+      <div class="about-tags font-mono text-muted tracking-widest uppercase" style="font-size: 0.875rem;">
+        <span class="about-tag">AI</span>
+        <span class="about-tag">Robotics</span>
+        <span class="about-tag">Computer Vision</span>
+        <span class="about-tag">Hardware</span>
+        <span class="about-tag">Automation</span>
+        <span class="about-tag">Systems Engineering</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="contact" class="contact-area">
+    <div class="container">
+      <div class="font-mono text-muted tracking-widest uppercase" style="font-size: 14px; margin-bottom: 32px;">
+        [ SYSTEM END ]
+      </div>
+      <h2 class="font-bold tracking-tighter uppercase">
+        HAVE AN IDEA? <br>
+        <span class="text-muted">LET'S BUILD IT.</span>
+      </h2>
+
+      <div class="btn-group" class="btn-group centered-buttons">
+        <a href="mailto:Purav2008abc@gmail.com" class="btn font-mono tracking-widest uppercase">
+          [ EMAIL ME ] ↗
+        </a>
+        <a href="https://github.com/2008robocode-crypto" target="_blank" class="btn font-mono tracking-widest uppercase">
+          [ GITHUB ] ↗
+        </a>
+        <a href="https://www.linkedin.com/in/purav-n-parashar-054a40302/" target="_blank" class="btn font-mono tracking-widest uppercase">
+          [ LINKEDIN ] ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="site-footer">
+      <div class="container site-footer-inner font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+        <div>PURAV N PARASHAR</div>
+        <div class="footer-links-flex">
+          <span>AI</span><span>×</span><span>ROBOTICS</span><span>×</span><span>SYSTEMS</span>
+        </div>
+        <div>EST. 2026</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="modal-mediflow" class="modal">
+    <div class="modal-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+      CASE STUDY / MEDIFLOW
+      <a href="#projects" class="modal-close text-foreground">✕</a>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-title font-bold tracking-tighter uppercase text-foreground">MEDIFLOW NEXUS</h2>
+      <img src="images/media_1788884197367.png" class="modal-hero-img" alt="Dashboard view of Mediflow Nexus platform">
+      
+      <div class="modal-grid">
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">01 / CATEGORY</div>
+            <div class="font-mono" style="font-size: 0.875rem;">AI × Healthcare × Optimization</div>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">02 / TECHNOLOGIES</div>
+            <ul class="font-mono" style="font-size: 0.875rem; line-height: 2;">
+              <li>— Python</li>
+              <li>— FastAPI</li>
+              <li>— OR-Tools</li>
+              <li>— BigQuery</li>
+              <li>— Vertex AI</li>
+              <li>— Gemini</li>
+              <li>— Next.js</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">03 / SYSTEM OVERVIEW</div>
+            <p class="font-light" style="font-size: 1.25rem; opacity: 0.8;">An AI-powered healthcare logistics platform designed to predict medicine stock-outs, identify risk, and intelligently redistribute medical resources between facilities.</p>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">04 / KEY CAPABILITIES</div>
+            <ul class="modal-list font-light" style="font-size: 1.125rem; opacity: 0.8;">
+              <li><span class="modal-list-num">01.</span> Forecasting</li>
+              <li><span class="modal-list-num">02.</span> Risk scoring</li>
+              <li><span class="modal-list-num">03.</span> Optimization</li>
+              <li><span class="modal-list-num">04.</span> Redistribution</li>
+              <li><span class="modal-list-num">05.</span> AI explanations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modal-ai" class="modal">
+    <div class="modal-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+      CASE STUDY / PERSONAL-AI
+      <a href="#projects" class="modal-close text-foreground">✕</a>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-title font-bold tracking-tighter uppercase text-foreground">PERSONAL AI COMPANION</h2>
+      <img src="images/media_1788884139383.png" class="modal-hero-img" alt="Physical prototype of personal AI companion">
+      
+      <div class="modal-grid">
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">01 / CATEGORY</div>
+            <div class="font-mono" style="font-size: 0.875rem;">ROBOTICS × AI × EMBODIED INTELLIGENCE</div>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">02 / TECHNOLOGIES</div>
+            <ul class="font-mono" style="font-size: 0.875rem; line-height: 2;">
+              <li>— Raspberry Pi</li>
+              <li>— Camera</li>
+              <li>— DC motors</li>
+              <li>— Motor controller</li>
+              <li>— Microphone</li>
+              <li>— Speaker</li>
+              <li>— Sensors</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">03 / SYSTEM OVERVIEW</div>
+            <p class="font-light" style="font-size: 1.25rem; opacity: 0.8;">An experimental physical AI system designed to bring conversational intelligence into the real world using Raspberry Pi, cameras, motors and sensors.</p>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">04 / KEY CAPABILITIES</div>
+            <ul class="modal-list font-light" style="font-size: 1.125rem; opacity: 0.8;">
+              <li><span class="modal-list-num">01.</span> SEE</li>
+              <li><span class="modal-list-num">02.</span> HEAR</li>
+              <li><span class="modal-list-num">03.</span> THINK</li>
+              <li><span class="modal-list-num">04.</span> SPEAK</li>
+              <li><span class="modal-list-num">05.</span> MOVE</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="modal-roborace" class="modal">
+    <div class="modal-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+      CASE STUDY / ROBO-RACE
+      <a href="#projects" class="modal-close text-foreground">✕</a>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-title font-bold tracking-tighter uppercase text-foreground">ROBO RACE</h2>
+      <img src="images/media_1788884153689.png" class="modal-hero-img" alt="Remote controlled roborace vehicle">
+      
+      <div class="modal-grid">
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">01 / CATEGORY</div>
+            <div class="font-mono" style="font-size: 0.875rem;">ROBOTICS × EMBEDDED SYSTEMS</div>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">02 / TECHNOLOGIES</div>
+            <ul class="font-mono" style="font-size: 0.875rem; line-height: 2;">
+              <li>— Arduino</li>
+              <li>— ESP8266</li>
+              <li>— L298N</li>
+              <li>— DC motors</li>
+              <li>— Joystick</li>
+              <li>— PWM</li>
+              <li>— Wireless comms</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">03 / SYSTEM OVERVIEW</div>
+            <p class="font-light" style="font-size: 1.25rem; opacity: 0.8;">A remotely controlled robotic vehicle built around microcontrollers, wireless communication, motor control and real-time input.</p>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">04 / ARCHITECTURE</div>
+            <ul class="modal-list font-light" style="font-size: 1.125rem; opacity: 0.8;">
+              <li><span class="modal-list-num">01.</span> CONTROLLER -> WIRELESS -> MICROCONTROLLER -> MOTOR DRIVER -> MOTORS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modal-crowd" class="modal">
+    <div class="modal-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+      CASE STUDY / CROWD-GUARDIAN
+      <a href="#projects" class="modal-close text-foreground">✕</a>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-title font-bold tracking-tighter uppercase text-foreground">CROWD GUARDIAN</h2>
+      <img src="images/media_1788884167581.png" class="modal-hero-img" alt="Crowd guardian computer vision detection">
+      
+      <div class="modal-grid">
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">01 / CATEGORY</div>
+            <div class="font-mono" style="font-size: 0.875rem;">COMPUTER VISION × SAFETY</div>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">02 / TECHNOLOGIES</div>
+            <ul class="font-mono" style="font-size: 0.875rem; line-height: 2;">
+              <li>— Python</li>
+              <li>— OpenCV</li>
+              <li>— YOLO</li>
+              <li>— TensorFlow</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">03 / SYSTEM OVERVIEW</div>
+            <p class="font-light" style="font-size: 1.25rem; opacity: 0.8;">An experimental computer-vision system designed to detect dangerous crowd conditions and identify potential stampede risks.</p>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">04 / KEY CAPABILITIES</div>
+            <ul class="modal-list font-light" style="font-size: 1.125rem; opacity: 0.8;">
+              <li><span class="modal-list-num">01.</span> Crowd density</li>
+              <li><span class="modal-list-num">02.</span> Movement patterns</li>
+              <li><span class="modal-list-num">03.</span> Abnormal behavior</li>
+              <li><span class="modal-list-num">04.</span> Risk detection</li>
+              <li><span class="modal-list-num">05.</span> Real-time alerts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-blind" class="modal">
+    <div class="modal-header font-mono text-muted tracking-widest uppercase" style="font-size: 12px;">
+      CASE STUDY / BLIND-AI
+      <a href="#projects" class="modal-close text-foreground">✕</a>
+    </div>
+    <div class="modal-content">
+      <h2 class="modal-title font-bold tracking-tighter uppercase text-foreground">BLIND AI 2.0</h2>
+      <img src="images/media_1788884181130.png" class="modal-hero-img" alt="Blind AI case study image">
+      
+      <div class="modal-grid">
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">01 / CATEGORY</div>
+            <div class="font-mono" style="font-size: 0.875rem;">AI × COMPUTER VISION × ACCESSIBILITY</div>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">02 / TECHNOLOGIES</div>
+            <ul class="font-mono" style="font-size: 0.875rem; line-height: 2;">
+              <li>— Computer Vision</li>
+              <li>— Edge AI</li>
+              <li>— Voice API</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">03 / SYSTEM OVERVIEW</div>
+            <p class="font-light" style="font-size: 1.25rem; opacity: 0.8;">An AI-powered indoor navigation concept designed to help visually impaired users understand and navigate complex environments.</p>
+          </div>
+          <div class="modal-section">
+            <div class="font-mono text-muted uppercase tracking-widest modal-section-title" style="font-size: 12px;">04 / KEY CAPABILITIES</div>
+            <ul class="modal-list font-light" style="font-size: 1.125rem; opacity: 0.8;">
+              <li><span class="modal-list-num">01.</span> Object detection</li>
+              <li><span class="modal-list-num">02.</span> Scene understanding</li>
+              <li><span class="modal-list-num">03.</span> Indoor navigation</li>
+              <li><span class="modal-list-num">04.</span> Voice guidance</li>
+              <li><span class="modal-list-num">05.</span> Obstacle awareness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
